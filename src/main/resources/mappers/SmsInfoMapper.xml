@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cp.smsservice.dao.SmsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cp.smsservice.model.SmsInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sms_title" property="smsTitle" jdbcType="VARCHAR" />
+    <result column="sms_info" property="smsInfo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="fail_reason" property="failReason" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="excute_time" property="excuteTime" jdbcType="TIMESTAMP" />
+    <result column="send_phone" property="sendPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sms_title, sms_info, status, fail_reason, create_time, excute_time, send_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sms_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sms_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cp.smsservice.model.SmsInfo" >
+    insert into sms_info (id, sms_title, sms_info, 
+      status, fail_reason, create_time, 
+      excute_time, send_phone)
+    values (#{id,jdbcType=BIGINT}, #{smsTitle,jdbcType=VARCHAR}, #{smsInfo,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{failReason,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{excuteTime,jdbcType=TIMESTAMP}, #{sendPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cp.smsservice.model.SmsInfo" >
+    insert into sms_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="smsTitle != null" >
+        sms_title,
+      </if>
+      <if test="smsInfo != null" >
+        sms_info,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="failReason != null" >
+        fail_reason,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="excuteTime != null" >
+        excute_time,
+      </if>
+      <if test="sendPhone != null" >
+        send_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="smsTitle != null" >
+        #{smsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="smsInfo != null" >
+        #{smsInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="failReason != null" >
+        #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="excuteTime != null" >
+        #{excuteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendPhone != null" >
+        #{sendPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cp.smsservice.model.SmsInfo" >
+    update sms_info
+    <set >
+      <if test="smsTitle != null" >
+        sms_title = #{smsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="smsInfo != null" >
+        sms_info = #{smsInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="failReason != null" >
+        fail_reason = #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="excuteTime != null" >
+        excute_time = #{excuteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendPhone != null" >
+        send_phone = #{sendPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cp.smsservice.model.SmsInfo" >
+    update sms_info
+    set sms_title = #{smsTitle,jdbcType=VARCHAR},
+      sms_info = #{smsInfo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      fail_reason = #{failReason,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      excute_time = #{excuteTime,jdbcType=TIMESTAMP},
+      send_phone = #{sendPhone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
