@@ -13,8 +13,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://47.104.241.220:3306/my_blog_db" userId="root"
-                        password="root"/>
+                        connectionURL="jdbc:mysql://w.hotel.master.single.p.mysql.elong.com:5330/hotel_master_single" userId="hotel_m_single_w"
+                        password="Lv8Jv2Ky6Iz2"/>
 
         <javaModelGenerator targetPackage="com.cp.smsservice.model"
                             targetProject="src/main/java">
@@ -37,7 +37,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="sms_info" domainObjectName="SmsInfo"
+        <table tableName="hotel_facility_ota" domainObjectName="HotelFacilityOta"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
